@@ -1,0 +1,26 @@
+{
+  "name": "spotify-share-music-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app/index.js",
+  "type": "module",
+  "scripts": {
+    "prestart": "npm i --sillent",
+    "start": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Onnion/spotify-share-music-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Onnion/spotify-share-music-generator/issues"
+  },
+  "homepage": "https://github.com/Onnion/spotify-share-music-generator#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}

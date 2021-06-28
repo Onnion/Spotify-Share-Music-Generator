@@ -1,16 +1,25 @@
-version: '3'
+version: "3"
+
 services:
-  app:
-    build:
-      context: ./
-      dockerfile: ./.docker/node/Dockerfile
-    container_name: 'app'
-    env_file: .env
-    environment:
-      - NODE_ENV=staging
-    restart: always
-    volumes:
-      - ./src:/app
-    ports:
-      - "5500:5500"
-    command: npm start
+    app:
+        build:
+            context: ./
+            dockerfile: ./.docker/node/Dockerfile
+        container_name: ssmg_app
+        restart: always
+        ports:
+          - ${PORT}:${PORT}
+        volumes:
+            - ./package.json:/home/node/app/package.json
+            - ./src:/home/node/app/src/
+            - ./node_modules:/home/node/app/node_modules/
+        env_file:
+            .env
+        networks:
+            - ssmg-networksite
+        command: npm start
+
+networks:
+    ssmg-networksite:
+        driver: bridge
+    

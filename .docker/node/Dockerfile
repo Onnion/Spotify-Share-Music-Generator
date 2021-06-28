@@ -1,3 +1,5 @@
 FROM node:14.15.5-alpine
 
-WORKDIR /app
+WORKDIR /home/node/app
+
+EXPOSE ${PORT}
