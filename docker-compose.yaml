@@ -2,22 +2,18 @@ version: "3"
 
 services:
     app:
-        build:
-            context: ./
-            dockerfile: ./.docker/node/Dockerfile
+        build: ./modules/app
         container_name: ssmg_app
+        entrypoint: ./.docker/entrypoint.sh
         restart: always
         ports:
-          - ${PORT}:${PORT}
+          - ${APP_PORT}:${APP_PORT}
         volumes:
-            - ./package.json:/home/node/app/package.json
-            - ./src:/home/node/app/src/
-            - ./node_modules:/home/node/app/node_modules/
+            - ./modules/app:/home/node/app
         env_file:
             .env
         networks:
             - ssmg-networksite
-        command: npm start
 
 networks:
     ssmg-networksite:
