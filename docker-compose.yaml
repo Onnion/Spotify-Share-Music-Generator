@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+    app:
+        build: ./modules/app
+        container_name: ssmg_app
+        env_file:
+            .env
+        ports:
+          - ${APP_PORT}:${APP_PORT}
+        volumes:
+            - ./modules/app:/home/node/app
+        entrypoint: ./.docker/entrypoint.sh
+        networks:
+            - ssmg-networksite
+
+    rabbitmq:
+        image: "rabbitmq:3.8-management-alpine"
+        container_name: ssmg_rabbitmq
+        hostname: rabbitmq
+        ports:
+        - "${RABBITMQ_UI_PORT}:${RABBITMQ_UI_PORT}"
+        - "${RABBITMQ_PORT}:${RABBITMQ_PORT}"
+        env_file:
+            .env
+        networks:
+            - ssmg-networksite
+
+networks:
+    ssmg-networksite:
+        driver: bridge
+    

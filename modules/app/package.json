@@ -1,0 +1,37 @@
+{
+  "name": "spotify-share-music-generator",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "prod": "node dist/index.js",
+    "cleandist": "rimraf dist",
+    "build": "npm run cleandist && sucrase ./src -d ./dist --transforms typescript,imports",
+    "ts-node": "ts-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Onnion/spotify-share-music-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Onnion/spotify-share-music-generator/issues"
+  },
+  "homepage": "https://github.com/Onnion/spotify-share-music-generator#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-spotify-api": "^1.1.1",
+    "amqplib": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "@types/amqplib": "^0.5.13",
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.12",
+    "ts-node": "^8.10.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
+  }
+}
