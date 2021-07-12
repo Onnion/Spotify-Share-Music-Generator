@@ -66,7 +66,8 @@ class ImageService:
         return dest
 
     def createVideo(self, image, audio, name):
-        dest = self.__getPath('dist', 'mp4', name)
+        timestamp = time.time()
+        dest = self.__getPath('dist', 'mp4', f"{name}_{timestamp}")
         image_path = self.__createTempImage(image)
         image_gradient_path = self.__createGradientImage(image_path)
         image = self.__createImage(image_gradient_path, image_path)
