@@ -34,7 +34,6 @@ class ImageService:
         color_thief = ColorThief(image_path)
         colors = color_thief.get_palette(quality=1, color_count=6)
 
-        print(colors)
         return colors
 
     def __createTempImage(self, image_url):
