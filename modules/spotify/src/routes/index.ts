@@ -7,16 +7,16 @@ import { VideoExchange } from '../utils/rabbitmq';
 const router = express.Router();
 const spotifyService = new SpotifySerice();
 
-router.get('/:trackUrl', async function (req, res) {
+router.post('/', async function (req, res) {
     try {
-        const { trackUrl } = req.params;
-        const { preview_url, album: { images } } = await spotifyService.getTrack(trackUrl);
-        const thumbs = images.map(image => image.url);
+        const { track_url } = <{ track_url: string }>req.body;
+        const { preview_url, album, name } = await spotifyService.getTrack(track_url);
+        const thumb = album.images[0]?.url;
+
         const rabbitmqService = new RabbitmqService(VideoExchange);
-    
-        await rabbitmqService.publish({ preview_url, thumbs, });
-    
-        res.status(200).send({ error: false, status: 'published' });
+        await rabbitmqService.publish({ album_name: album.name, name, preview_url, thumb, });
+
+        res.status(200).send({ error: false, status: 'published', data: { album_name: album.name, name, preview_url, thumb, } });
     } catch (error) {
         res.status(500).send({ error: true, status: 'unpublished', message: error.message });
     }

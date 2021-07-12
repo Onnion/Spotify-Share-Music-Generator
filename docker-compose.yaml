@@ -2,31 +2,50 @@ version: "3"
 
 services:
     app:
-        build: ./modules/app
+        build: ./modules/spotify/.docker/
         container_name: ssmg_app
         env_file:
             .env
         ports:
           - ${APP_PORT}:${APP_PORT}
         volumes:
-            - ./modules/app:/home/node/app
+            - ./modules/spotify:/home/node/spotify
         entrypoint: ./.docker/entrypoint.sh
+        depends_on:
+            - rabbitmq
         networks:
-            - ssmg-networksite
+            - ssmg-network
+
+    video:
+        build: ./modules/video/.docker/
+        container_name: ssmg_video
+        restart: on-failure
+        env_file:
+            .env
+        volumes:
+            - ./modules/video:/home/python/video
+        entrypoint: ./.docker/entrypoint.sh
+        depends_on:
+            - rabbitmq
+        networks:
+            - ssmg-network
 
     rabbitmq:
         image: "rabbitmq:3.8-management-alpine"
         container_name: ssmg_rabbitmq
         hostname: rabbitmq
         ports:
-        - "${RABBITMQ_UI_PORT}:${RABBITMQ_UI_PORT}"
-        - "${RABBITMQ_PORT}:${RABBITMQ_PORT}"
+            - "${RABBITMQ_UI_PORT}:${RABBITMQ_UI_PORT}"
+            - "${RABBITMQ_PORT}:${RABBITMQ_PORT}"
+        volumes: 
+            - ./modules/rabbitmq/data:/var/lib/rabbitmq/
+            - ./modules/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json
         env_file:
             .env
         networks:
-            - ssmg-networksite
+            - ssmg-network
 
 networks:
-    ssmg-networksite:
+    ssmg-network:
         driver: bridge
     
