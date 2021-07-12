@@ -26,12 +26,26 @@ $ cp .env.default .env
 ```
 
 `Add execution permition in entrypoint.sh files`
-
 ```bash
 $ chmod +x modules/**/.docker/*.sh
 ```
+
+`Get Postman collection`
+
+[Postman collection](https://www.getpostman.com/collections/3d2a09ccfd37219b8a9d)
+
 
 ## Running
 ```bash
 $ docker-compose up -d
 ```
+
+## How to Use
+
+1. Run the project using above commands
+2. Get song url in `share` option in spotify
+<img align="left" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/Screenshot+from+2021-07-12+19-04-57.jpg">
+3. Put the url on the body of request in Postman collection
+<img align="left" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/Screenshot+from+2021-07-12+19-11-39.jpg">
+4. After send request the story is create in folder `modules/video/dist`
+
