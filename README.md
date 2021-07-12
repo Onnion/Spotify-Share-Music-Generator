@@ -9,9 +9,11 @@
     <space></space>
     <img src="https://img.shields.io/static/v1?label=rabbitmq&message=3.8&color=f86604&style=for-the-badge&logo=rabbitmq"/>
     <space></space>
-    <img src="https://img.shields.io/static/v1?label=docker&message=20.10.7&color=0db7ed&style=for-the-badge&logo=docker"/>
+    <img src="https://img.shields.io/static/v1?label=python&message=3.8&color=ffd43b&style=for-the-badge&logo=python"/>
     <space></space>
-     <img src="https://img.shields.io/static/v1?label=docker-compose&message=1.26.0&color=0db7ed&style=for-the-badge&logo=docker"/>
+    <img src="https://img.shields.io/static/v1?label=docker&message=20.10.7&color=306998&style=for-the-badge&logo=docker"/>
+    <space></space>
+    <img src="https://img.shields.io/static/v1?label=docker-compose&message=1.26.0&color=306998&style=for-the-badge&logo=docker"/>
     <space></space>
 </div>
 
@@ -21,6 +23,12 @@
 `Copy de .env file and set values`
 ```bash
 $ cp .env.default .env
+```
+
+`Add execution permition in entrypoint.sh files`
+
+```bash
+$ chmod +x modules/**/.docker/*.sh
 ```
 
 ## Running
