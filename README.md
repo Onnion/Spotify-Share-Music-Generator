@@ -25,6 +25,12 @@
 $ cp .env.default .env
 ```
 
+`Add execution permition in entrypoint.sh files`
+
+```bash
+$ chmod +x modules/**/.docker/*.sh
+```
+
 ## Running
 ```bash
 $ docker-compose up -d
