@@ -1,0 +1,104 @@
+{
+    "rabbit_version": "3.8.19",
+    "rabbitmq_version": "3.8.19",
+    "product_name": "RabbitMQ",
+    "product_version": "3.8.19",
+    "users": [
+        {
+            "name": "admin",
+            "password_hash": "GP70IOn1v8NwEUTYLyvkqgJ+Zf4a3ScrtMYPUWmPKTitOufY",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": "administrator",
+            "limits": {}
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "admin",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "topic_permissions": [],
+    "parameters": [],
+    "global_parameters": [
+        {
+            "name": "internal_cluster_id",
+            "value": "rabbitmq-cluster-id-QaHoCArYndHAiq5mfcv7nA"
+        }
+    ],
+    "policies": [],
+    "queues": [
+        {
+            "name": "video_upload",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "video_log",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "video_create",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        }
+    ],
+    "exchanges": [
+        {
+            "name": "video",
+            "vhost": "/",
+            "type": "topic",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments": {}
+        }
+    ],
+    "bindings": [
+        {
+            "source": "video",
+            "vhost": "/",
+            "destination": "video_log",
+            "destination_type": "queue",
+            "routing_key": "video.#",
+            "arguments": {}
+        },
+        {
+            "source": "video",
+            "vhost": "/",
+            "destination": "video_create",
+            "destination_type": "queue",
+            "routing_key": "video.create",
+            "arguments": {}
+        },
+        {
+            "source": "video",
+            "vhost": "/",
+            "destination": "video_upload",
+            "destination_type": "queue",
+            "routing_key": "video.upload",
+            "arguments": {}
+        }
+    ]
+}

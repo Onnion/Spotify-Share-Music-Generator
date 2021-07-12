@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/node/app/
+cd /home/node/spotify/
 npm install
 
 npm start
