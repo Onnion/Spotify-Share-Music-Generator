@@ -6,6 +6,6 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/', indexRouter);
-app.listen(process.env.APP_PORT, () => {
-    console.log(`Listten in http://localhost:${process.env.APP_PORT}`)
+app.listen(process.env.SPOTIFY_PORT, () => {
+    console.log(`Listten in http://localhost:${process.env.SPOTIFY_PORT}`)
 });

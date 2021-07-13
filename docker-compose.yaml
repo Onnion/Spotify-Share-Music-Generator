@@ -2,12 +2,28 @@ version: "3"
 
 services:
     app:
-        build: ./modules/spotify/.docker/
+        build: ./modules/app/.docker/
         container_name: ssmg_app
         env_file:
             .env
         ports:
           - ${APP_PORT}:${APP_PORT}
+        volumes:
+            - ./modules/app:/home/node/app
+        entrypoint: ./.docker/entrypoint.sh
+        depends_on:
+            - rabbitmq
+            - spotify
+        networks:
+            - ssmg-network
+
+    spotify:
+        build: ./modules/spotify/.docker/
+        container_name: ssmg_spotify
+        env_file:
+            .env
+        ports:
+          - ${SPOTIFY_PORT}:${SPOTIFY_PORT}
         volumes:
             - ./modules/spotify:/home/node/spotify
         entrypoint: ./.docker/entrypoint.sh
