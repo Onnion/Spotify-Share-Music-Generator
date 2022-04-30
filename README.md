@@ -49,3 +49,16 @@ $ docker-compose up -d
 <img align="left" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/Screenshot+from+2021-07-12+19-11-39.jpg">
 4. After send request the story is create in folder `modules/video/dist`
 
+
+---
+## Todos
+---
+- [ ] Aws infra:
+    - [ ] Cloudformation
+        - [ ] S3 Bucket
+        - [ ] SQS/SNS 
+    - [ ] Localstack
+- [ ] Refactoring
+    - [ ] Remove RabbitMQ
+    - [ ] Upload videos to S3 local bucket
+    - [ ] Pub/Sub messages to local SQS/SNS
