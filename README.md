@@ -66,7 +66,7 @@ docker-compose up
     - [x] S3 Bucket
     - [x] SQS/SNS
     - [ ] Queue DLQ
-  - [ ] Localstack
+  - [x] Localstack
 - [ ] Refactoring
   - [ ] Remove RabbitMQ
   - [ ] Upload videos to S3 local bucket
