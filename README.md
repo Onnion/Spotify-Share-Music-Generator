@@ -64,7 +64,8 @@ docker-compose up
 - [ ] Aws infra:
   - [ ] Cloudformation
     - [x] S3 Bucket
-    - [ ] SQS/SNS
+    - [x] SQS/SNS
+    - [ ] Queue DLQ
   - [ ] Localstack
 - [ ] Refactoring
   - [ ] Remove RabbitMQ
