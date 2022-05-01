@@ -70,4 +70,5 @@ docker-compose up
 - [ ] Refactoring
   - [ ] Remove RabbitMQ
   - [ ] Upload videos to S3 local bucket
-  - [ ] Pub/Sub messages to local SQS/SNS
+  - [ ] Subscribe VideoCreateQueue
+  - [ ] Publish into VideoCreateTopic
