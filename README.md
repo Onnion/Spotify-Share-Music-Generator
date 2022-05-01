@@ -10,55 +10,63 @@
     <img src="https://img.shields.io/static/v1?label=rabbitmq&message=3.8&color=f86604&style=for-the-badge&logo=rabbitmq"/>
     <space></space>
     <img src="https://img.shields.io/static/v1?label=python&message=3.8&color=ffd43b&style=for-the-badge&logo=python"/>
-    <space></space>
-    <img src="https://img.shields.io/static/v1?label=docker&message=20.10.7&color=306998&style=for-the-badge&logo=docker"/>
-    <space></space>
-    <img src="https://img.shields.io/static/v1?label=docker-compose&message=1.26.0&color=306998&style=for-the-badge&logo=docker"/>
-    <space></space>
 </div>
-
 <br>
 
-## Pre-Running
-`Copy de .env file and set values`
-```bash
-$ cp .env.default .env
-```
+---
 
-`Add execution permition in entrypoint.sh files`
-```bash
-$ chmod +x modules/**/.docker/*.sh
-```
+## Requirements
 
-`Get Postman collection`
+---
 
-[Postman collection](https://www.getpostman.com/collections/3d2a09ccfd37219b8a9d)
+- `docker`
+- `docker-compose`
+- `awslocal` ( [Awslocal Instalation](https://github.com/localstack/awscli-local#installation) )
+- `collection` ( [Postman collection](https://www.getpostman.com/collections/3d2a09ccfd37219b8a9d) )
 
+---
 
 ## Running
+
+---
+
+`Copy de .env file and set values`
+
 ```bash
-$ docker-compose up -d
+cp .env.default .env
 ```
 
-## How to Use
+`Execution permition in executables files`
 
-1. Run the project using above commands
-2. Get song url in `share` option in spotify
-<img align="left" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/Screenshot+from+2021-07-12+19-04-57.jpg">
-3. Put the url on the body of request in Postman collection
-<img align="left" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/Screenshot+from+2021-07-12+19-11-39.jpg">
-4. After send request the story is create in folder `modules/video/dist`
+```bash
+chmod +x modules/**/.docker/*.sh
+chmod +x configs/*.sh
+```
 
+`Run the docker container`
+
+```bash
+docker-compose up
+```
+
+`Run the configs`
+
+```bash
+./configs/init.sh
+```
 
 ---
+
 ## Todos
+
 ---
+
 - [ ] Aws infra:
-    - [ ] Cloudformation
-        - [ ] S3 Bucket
-        - [ ] SQS/SNS 
-    - [ ] Localstack
+  - [ ] Cloudformation
+    - [x] S3 Bucket
+    - [ ] SQS/SNS
+  - [ ] Localstack
 - [ ] Refactoring
-    - [ ] Remove RabbitMQ
-    - [ ] Upload videos to S3 local bucket
-    - [ ] Pub/Sub messages to local SQS/SNS
+  - [ ] Remove RabbitMQ
+  - [ ] Upload videos to S3 local bucket
+  - [ ] Pub/Sub messages to local SQS/SNS
