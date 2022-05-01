@@ -1,5 +1,25 @@
 Resources:
-  LocalVideoBucket:
+  VideoBucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: videos-bucket
+
+  VideoCreateTopic:
+    Type : AWS::SNS::Topic
+    Properties:
+      TopicName: "VideoCreateTopic"
+
+  VideoCreateQueue:
+    Type : AWS::SQS::Queue
+    Properties:
+      QueueName: VideoCreateQueue
+
+  VideoCreateQueueSubscription:
+    Type : AWS::SNS::Subscription
+    Properties:
+      TopicArn: !Ref VideoCreateTopic
+      Endpoint: !GetAtt
+        - VideoCreateQueue
+        - Arn
+      Protocol: sqs
+      RawMessageDelivery: 'true'
