@@ -1,0 +1,8 @@
+{
+  "packages/video": {
+    "release-type": "python"
+  },
+  "packages/spotify": {
+    "release-type": "node"
+  }
+}

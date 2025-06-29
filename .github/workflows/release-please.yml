@@ -1,0 +1,23 @@
+name: Release Please (Monorepo com Python e Node)
+
+on:
+  push:
+    branches:
+      - main # ajuste se sua branch principal for diferente
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Geração de PRs de Release para Pacotes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Release Please - Modo Manifest
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: .release-please-manifest.json
+          manifest-file: .release-please-manifest.json
