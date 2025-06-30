@@ -1,5 +1,5 @@
 {
-  "name": "spotify-share-music-generator",
+  "name": "spotify",
   "version": "1.0.0",
   "description": "A generator for sharing Spotify music",
   "scripts": {
@@ -8,39 +8,34 @@
     "cleandist": "rimraf dist",
     "build": "npm run cleandist && sucrase ./src -d ./dist --transforms typescript,imports",
     "ts-node": "ts-node",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Onnion/spotify-share-music-generator.git"
-  },
-  "keywords": [
-    "spotify",
-    "music",
-    "generator",
-    "share"
-  ],
-  "author": "Onnion",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Onnion/spotify-share-music-generator/issues"
-  },
-  "homepage": "https://github.com/Onnion/spotify-share-music-generator#readme",
   "dependencies": {
     "amqplib": "^0.6.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "node-spotify-api": "^1.1.1"
   },
-  "devDependencies": {
-    "jest": "^26.0.0",
-    "nodemon": "^2.0.7",
+  "devDeypendencies": {
     "@types/amqplib": "^0.5.13",
     "@types/express": "^4.17.6",
     "@types/jest": "^26.0.0",
     "@types/node": "^14.0.12",
+    "eslint": "^9.30.0",
+    "jest": "^26.0.0",
+    "nodemon": "^2.0.7",
     "ts-node": "^8.10.2",
     "tslib": "^2.0.0",
     "typescript": "^3.9.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@eslint/json": "^0.12.0",
+    "@eslint/markdown": "^6.6.0",
+    "@types/node": "^24.0.7",
+    "eslint": "^9.30.0",
+    "globals": "^16.2.0",
+    "typescript-eslint": "^8.35.0"
   }
 }

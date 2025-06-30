@@ -1,11 +1,15 @@
-import { Connection, Channel, connect } from "amqplib";
+import { Channel, connect, Connection } from "amqplib";
 import { Context } from "../../utils/rabbitmq";
+import { Video } from "@libs/domain/entity/video/video.entity";
 
 class RabbitmqServer {
     private conn: Connection;
     private channel: Channel;
+    private uri: string;
 
-    constructor(private uri: string) { }
+    constructor(_uri: string) {
+        this.uri = _uri;
+    }
 
     async start(): Promise<void> {
         this.conn = await connect(this.uri);
@@ -29,7 +33,7 @@ export default class RabbitmqService {
         this.context = context;
     }
 
-    async publish(message: any) {
+    async publish(message: Video) {
         await this.rabbitmq.start();
         await this.rabbitmq
             .publishInExchange(this.context.exchange, this.context.routingKey, JSON.stringify(message));

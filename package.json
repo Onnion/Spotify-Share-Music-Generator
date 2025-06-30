@@ -1,0 +1,34 @@
+{
+  "author": "Onnion",
+  "bugs": {
+    "url": "https://github.com/Onnion/spotify-share-music-generator/issues"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2"
+  },
+  "homepage": "https://github.com/Onnion/spotify-share-music-generator#readme",
+  "keywords": [
+    "generator",
+    "music",
+    "share",
+    "spotify"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "packages/spotify/**/*.{js,jsx,ts,tsx}": "npm run lint:node",
+    "packages/video/**/*.py": "npm run lint:python"
+  },
+  "name": "spotify-share-music-generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Onnion/spotify-share-music-generator.git"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "lint:node": "sh ./scripts/lint-node.sh",
+    "lint:python": "sh ./scripts/lint-python.sh"
+  }
+}

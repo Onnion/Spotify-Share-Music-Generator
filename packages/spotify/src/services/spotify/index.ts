@@ -12,7 +12,7 @@ export default class SpotifySerice {
         return spotifyApi;
     }
     private getTrackToken = (trackUrl: string): string => {
-        const [prefix, token] = trackUrl.match(TRACK_REGEX);
+        const [, token] = trackUrl.match(TRACK_REGEX);
         return token;
     }
 
