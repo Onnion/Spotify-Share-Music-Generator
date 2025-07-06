@@ -2,7 +2,7 @@ name: Deploy NestJS to Amazon ECR
 
 on:
   push:
-    branches: [feat/nestjs-deployment]
+    branches: [feat/nestjs-depoyment]
 
 jobs:
   deploy:
