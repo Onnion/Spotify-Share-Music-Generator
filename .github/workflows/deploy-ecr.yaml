@@ -10,7 +10,7 @@ on:
     branches:
       - feat/nestjs-depoyment
   workflow_dispatch:
-  
+
 jobs:
   build:
     name: Build Docker Image
@@ -26,11 +26,13 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f packages/spotify-nest/deploy/Dockerfile .
       - name: Save Docker image as artifact
+        run: docker save $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG | gzip > image.tar.gz
+
+      - name: Upload Docker image artifact
         uses: actions/upload-artifact@v4
         with:
           name: docker-image
-          path: |
-            $(docker save $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG | gzip > image.tar.gz && echo image.tar.gz)
+          path: image.tar.gz
 
   iac:
     name: Terraform Apply

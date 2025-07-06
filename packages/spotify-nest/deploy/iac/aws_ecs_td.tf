@@ -19,6 +19,8 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_attach" {
   role       = aws_iam_role.ecs_task_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+  depends_on = [aws_iam_role.ecs_task_execution_role
+  ]
 }
 
 resource "aws_ecs_task_definition" "spotify_nestjs_td" {
@@ -29,4 +31,5 @@ resource "aws_ecs_task_definition" "spotify_nestjs_td" {
   cpu                      = "256"
   memory                   = "512"
   container_definitions    = file("${path.module}/task_definition/${var.environment}.json")
+  depends_on               = [aws_iam_role.ecs_task_execution_role]
 }
