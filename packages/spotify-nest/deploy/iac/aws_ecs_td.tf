@@ -9,8 +9,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
         Service = "ecs-tasks.amazonaws.com"
       },
       Action = [
-        "sts:AssumeRole",
-        "iam:CreateRole"
+        "sts:AssumeRole"
       ]
     }]
   })
