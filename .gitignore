@@ -84,5 +84,7 @@ modules/**/.npm*
 dist
 temp
 
-
 __pycache__
+
+# terraform
+.terraform*

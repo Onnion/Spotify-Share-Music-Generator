@@ -49,3 +49,19 @@ $ docker-compose up -d
 <img align="left" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/Screenshot+from+2021-07-12+19-11-39.jpg">
 4. After send request the story is create in folder `modules/video/dist`
 
+## Configurando credenciais AWS (aws configure)
+
+Para que o deploy e integração com recursos AWS funcionem corretamente, configure suas credenciais utilizando o comando abaixo:
+
+```bash
+aws configure
+```
+
+Você será solicitado a informar:
+- AWS Access Key ID
+- AWS Secret Access Key
+- Default region name (ex: sa-east-1)
+- Default output format (ex: json)
+
+Essas credenciais são necessárias para autenticar comandos e automações que utilizam a AWS CLI, como o deploy de imagens Docker no ECR ou execução de scripts Terraform.
+
