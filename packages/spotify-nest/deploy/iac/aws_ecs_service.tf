@@ -17,7 +17,7 @@ resource "aws_ecs_service" "spotify_service" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.spotify_nestjs_tg.arn
-    container_name   = "nestjs"
+    container_name   = var.ecr_repository_name
     container_port   = var.container_port
   }
   depends_on = [aws_lb_listener.spotify_listener]

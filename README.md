@@ -1,3 +1,5 @@
+[![Deploy NestJS to Amazon ECR](https://github.com/Onnion/Spotify-Share-Music-Generator/actions/workflows/deploy-ecr.yaml/badge.svg?branch=feat%2Fnestjs-depoyment)](https://github.com/Onnion/Spotify-Share-Music-Generator/actions/workflows/deploy-ecr.yaml)
+
 <img align="center" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/image.psd.jpg">
 
 <h1 align="center">SPOTIFY SHARE MUSIC GERENATOR</h1>
