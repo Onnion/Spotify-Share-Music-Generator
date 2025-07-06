@@ -57,7 +57,7 @@ $ docker-compose up -d
 
 ### Usando Tasks (tasks.json)
 - Pressione `Ctrl+Shift+B` para abrir o menu de execução de tarefas do VS Code.
-- Escolha **Build Docker Image (spotify-nest)** para buildar a imagem Docker do backend.
+- A imagem docker vai ser buildade automáticamente.
 
 Essas opções facilitam rodar e testar o projeto diretamente pelo VS Code, sem precisar digitar comandos no terminal.
 
