@@ -2,6 +2,7 @@ name: Deploy NestJS to Amazon ECR
 
 env:
   tfstate: "env:/${{ secrets.ECR_REPOSITORY}}/terraform.tfstate"
+  environment: "dev"
 
 on:
   push:
@@ -47,7 +48,7 @@ jobs:
         run: terraform init -backend-config="key=${{ env.tfstate }}"
       - name: Terraform Plan
         working-directory: packages/spotify-nest/deploy/iac
-        run: terraform plan -out=terraform.tfplan
+        run: terraform plan -var=environment=${{ env.environment }} -out=terraform.tfplan
       - name: Terraform Apply
         working-directory: packages/spotify-nest/deploy/iac
         run: terraform apply -auto-approve terraform.tfplan
