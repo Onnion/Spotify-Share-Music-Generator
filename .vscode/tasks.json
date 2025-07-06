@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Docker Image (spotify-nest)",
+      "type": "shell",
+      "command": "if command -v docker > /dev/null 2>&1; then docker build -f packages/spotify-nest/deploy/Dockerfile .; else echo 'Docker não está instalado ou não está no PATH.'; exit 1; fi",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
