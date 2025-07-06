@@ -1,5 +1,8 @@
 name: Deploy NestJS to Amazon ECR
 
+env:
+  tfstate: "spotify-share-music-generator.tfstate/terraform.tfstate"
+
 on:
   push:
     branches:
@@ -41,10 +44,13 @@ jobs:
         uses: hashicorp/setup-terraform@v3
       - name: Terraform Init
         working-directory: packages/spotify-nest/deploy/iac
-        run: terraform init
+        run: terraform init -backend-config="bucket=spotify-share-music-generator.tfstate" -backend-config="key=spotify-share-music-generator.tfstate/terraform.tfstate" -backend-config="region=sa-east-1" -backend-config="encrypt=true"
+      - name: Terraform Plan
+        working-directory: packages/spotify-nest/deploy/iac
+        run: terraform plan -out=terraform.tfplan
       - name: Terraform Apply
         working-directory: packages/spotify-nest/deploy/iac
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve terraform.tfplan
 
   deploy:
     name: Push Docker Image to ECR
