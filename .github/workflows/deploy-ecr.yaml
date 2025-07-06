@@ -44,7 +44,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
       - name: Terraform Init
         working-directory: packages/spotify-nest/deploy/iac
-        run: terraform init -backend-config="bucket=spotify-share-music-generator.tfstate" -backend-config="key=spotify-share-music-generator.tfstate/terraform.tfstate" -backend-config="region=sa-east-1" -backend-config="encrypt=true"
+        run: terraform init -backend-config="key:env:/${{ env.tfstate }}"
       - name: Terraform Plan
         working-directory: packages/spotify-nest/deploy/iac
         run: terraform plan -out=terraform.tfplan
