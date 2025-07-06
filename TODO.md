@@ -12,7 +12,7 @@
 
 #### 2. Transformação em Monorepo  
 
-- [ ] Migrar o projeto Node.js para um monorepo utilizando NestJS.  
+- [x] Migrar o projeto Node.js para um monorepo utilizando NestJS.  
 - [ ] Criar serviço Spotify no monorepo.  
 - [ ] Adicionar um frontend ao monorepo.  
 - [x] Configurar ferramentas de build e lint para o monorepo.  
