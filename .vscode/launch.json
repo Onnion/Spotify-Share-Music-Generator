@@ -4,9 +4,14 @@
     {
       "name": "Run package/spotify-nest",
       "request": "launch",
-      "runtimeArgs": ["run-script", "start"],
+      "runtimeArgs": [
+        "run-script",
+        "start"
+      ],
       "runtimeExecutable": "npm",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "type": "node",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}/packages/spotify-nest",
