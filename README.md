@@ -49,6 +49,18 @@ $ docker-compose up -d
 <img align="left" src="https://spotiy-share-music-generator.s3.sa-east-1.amazonaws.com/assets/Screenshot+from+2021-07-12+19-11-39.jpg">
 4. After send request the story is create in folder `modules/video/dist`
 
+## Como rodar o projeto pelo VS Code
+
+### Usando o Debug (launch.json)
+- Abra o menu de execução/depuração do VS Code (ícone de play ou `Ctrl+Shift+D`).
+- Selecione a configuração **Run package/spotify-nest** e clique em "Iniciar Depuração" para rodar o backend em modo desenvolvimento.
+
+### Usando Tasks (tasks.json)
+- Pressione `Ctrl+Shift+B` para abrir o menu de execução de tarefas do VS Code.
+- Escolha **Build Docker Image (spotify-nest)** para buildar a imagem Docker do backend.
+
+Essas opções facilitam rodar e testar o projeto diretamente pelo VS Code, sem precisar digitar comandos no terminal.
+
 ## Configurando credenciais AWS (aws configure)
 
 Para que o deploy e integração com recursos AWS funcionem corretamente, configure suas credenciais utilizando o comando abaixo:
