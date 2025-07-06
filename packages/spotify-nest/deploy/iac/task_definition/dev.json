@@ -1,6 +1,6 @@
 [
   {
-    "name": "spotify_nestjs",
+    "name": "spotify-nestjs",
     "image": "544893998937.dkr.ecr.sa-east-1.amazonaws.com/spotify-nestjs:latest",
     "essential": true,
     "portMappings": [

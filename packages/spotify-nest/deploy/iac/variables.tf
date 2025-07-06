@@ -5,7 +5,7 @@ variable "aws_region" {
 }
 
 variable "ecr_repository_name" {
-  default = "nestjs-spotify"
+  default = "spotify-nestjs"
 }
 
 variable "container_port" {
