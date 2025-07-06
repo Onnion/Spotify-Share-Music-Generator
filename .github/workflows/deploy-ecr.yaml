@@ -9,7 +9,8 @@ on:
   push:
     branches:
       - feat/nestjs-depoyment
-
+  workflow_dispatch:
+  
 jobs:
   build:
     name: Build Docker Image
