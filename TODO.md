@@ -15,7 +15,7 @@
 - [ ] Migrar o projeto Node.js para um monorepo utilizando NestJS.  
 - [ ] Criar serviço Spotify no monorepo.  
 - [ ] Adicionar um frontend ao monorepo.  
-- [ ] Configurar ferramentas de build e lint para o monorepo.  
+- [x] Configurar ferramentas de build e lint para o monorepo.  
 
 #### 3. Serviço de Vídeo como Lambda AWS  
 
