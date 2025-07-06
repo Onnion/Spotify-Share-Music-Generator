@@ -1,8 +1,8 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
-COPY packages/spotify-nestj/package*.json ./
+COPY packages/spotify-nest/package*.json ./
 RUN npm install
-COPY packages/spotify-nestj .
+COPY packages/spotify-nest .
 RUN npm run build 
 
 FROM node:20-alpine
