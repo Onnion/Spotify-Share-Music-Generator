@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+      ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
       ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
       IMAGE_TAG: latest
 
@@ -31,5 +31,5 @@ jobs:
 
       - name: Build and push Docker image to ECR
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGEspotify-nest_TAG -f packages/spotify-nest/deploy/Dockerfile .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f packages/spotify-nest/deploy/Dockerfile .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
