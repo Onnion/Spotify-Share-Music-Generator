@@ -11,6 +11,9 @@ module "vpc" {
 
   enable_nat_gateway = false
   single_nat_gateway = false
+
+  enable_dns_hostnames = true
+  enable_dns_support   = true
 }
 
 resource "aws_security_group" "spotify_nestjs" {
@@ -30,4 +33,28 @@ resource "aws_security_group" "spotify_nestjs" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+resource "aws_vpc_endpoint" "ecr_api" {
+  vpc_id             = module.vpc.vpc_id
+  service_name       = "com.amazonaws.${var.aws_region}.ecr.api"
+  vpc_endpoint_type  = "Interface"
+  subnet_ids         = module.vpc.private_subnets
+  security_group_ids = [aws_security_group.spotify_nestjs.id]
+}
+
+resource "aws_vpc_endpoint" "ecr_dkr" {
+  vpc_id             = module.vpc.vpc_id
+  service_name       = "com.amazonaws.${var.aws_region}.ecr.dkr"
+  vpc_endpoint_type  = "Interface"
+  subnet_ids         = module.vpc.private_subnets
+  security_group_ids = [aws_security_group.spotify_nestjs.id]
+}
+
+resource "aws_vpc_endpoint" "logs" {
+  vpc_id             = module.vpc.vpc_id
+  service_name       = "com.amazonaws.${var.aws_region}.logs"
+  vpc_endpoint_type  = "Interface"
+  subnet_ids         = module.vpc.private_subnets
+  security_group_ids = [aws_security_group.spotify_nestjs.id]
 }
