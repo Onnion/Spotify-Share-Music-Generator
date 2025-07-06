@@ -1,15 +1,25 @@
 name: Deploy NestJS to Amazon ECR
 
-env:
-  tfstate: "env:/${{ secrets.ECR_REPOSITORY}}/terraform.tfstate"
-  environment: "dev"
-  aws_account: "544893998937"
-
 on:
   push:
     branches:
       - feat/nestjs-depoyment
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Ambiente de deploy"
+        required: false
+        default: "dev"
+      image_tag:
+        description: "Tag da imagem Docker"
+        required: false
+        default: "latest"
+
+env:
+  environment: ${{ github.event.inputs.environment || 'dev' }}
+  IMAGE_TAG: ${{ github.event.inputs.image_tag || 'latest' }}
+  tfstate: "${{ secrets.ECR_REPOSITORY}}/terraform.tfstate"
+  aws_account: "544893998937"
 
 jobs:
   build:
@@ -49,7 +59,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
       - name: Terraform Init
         working-directory: packages/spotify-nest/deploy/iac
-        run: terraform init -backend-config="key=${{ env.tfstate }}"
+        run: terraform init -backend-config="key=env/${{ env.environment }}/${{ env.tfstate }}"
       - name: Terraform Plan
         working-directory: packages/spotify-nest/deploy/iac
         run: terraform plan -var=environment=${{ env.environment }} -out=terraform.tfplan
