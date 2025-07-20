@@ -25,7 +25,7 @@
 
 #### 4. Infraestrutura com Terraform  
 
-- [ ] Criar scripts Terraform para provisionar recursos na AWS.  
+- [x] Criar scripts Terraform para provisionar recursos na AWS.  
 - [ ] Configurar VPC, subnets e segurança.  
 - [ ] Provisionar recursos necessários para Kafka, Lambda e EKS.  
 
@@ -39,12 +39,12 @@
 ### Extras  
 
 - [x] Documentar todas as etapas e decisões tomadas.  
-- [ ] Configurar CI/CD para o projeto.  
+- [x] Configurar CI/CD para o projeto.  
 - [ ] Garantir cobertura de testes em todos os serviços.  
 
 #### 6. CI/CD com GitHub Actions  
 
-- [ ] Configurar workflows no GitHub Actions para build e deploy.  
+- [x] Configurar workflows no GitHub Actions para build e deploy.  
 - [ ] Criar pipeline para deploy automatizado na AWS.  
 - [ ] Testar integração do CI/CD com os serviços provisionados.  
 

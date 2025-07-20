@@ -1,11 +1,13 @@
+import { PreviewUrlVO, PreviewUrlVOProps } from "./vo/preview-url.vo";
+
 type ConstructorProps = {
-  previewUrl: string;
+  previewUrl: PreviewUrlVOProps;
   album: string;
   name: string;
 };
 
 type ConstructorArgs = {
-  preview_url: string;
+  preview_url: PreviewUrlVO;
   album: string;
   name: string;
 };
@@ -25,7 +27,7 @@ export class Track {
     // @TODO: Adicionar valiação
 
     return new Track({
-      preview_url: props.previewUrl,
+      preview_url: PreviewUrlVO.new(props.previewUrl),
       album: props.album,
       name: props.name,
     });

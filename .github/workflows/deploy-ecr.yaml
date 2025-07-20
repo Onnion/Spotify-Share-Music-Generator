@@ -34,8 +34,9 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f packages/spotify-nest/deploy/Dockerfile .
-      - name: Save Docker image as artifact
-        run: docker save $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG | gzip > image.tar.gz
+      - name: Save Docker image to file
+        run: |
+          docker save $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG | gzip > image.tar.gz
 
       - name: Upload Docker image artifact
         uses: actions/upload-artifact@v4

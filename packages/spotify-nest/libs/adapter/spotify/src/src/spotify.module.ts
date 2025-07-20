@@ -1,6 +1,6 @@
+import { ISpotifyService } from '@contracts/services/spotify.service';
 import { Module } from '@nestjs/common';
 import { SpotifyService } from './spotify.service';
-import { ISpotifyService } from '@contracts/services/spotify.service';
 
 @Module({
   providers: [
