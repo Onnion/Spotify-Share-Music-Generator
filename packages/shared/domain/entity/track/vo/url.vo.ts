@@ -1,16 +1,16 @@
-export type PreviewUrlVOProps = string;
+export type UrlVOProps = string;
 
-export class PreviewUrlVO {
+export class UrlVO {
   private readonly _value: string;
 
   constructor(url: string) {
     this._value = url;
   }
 
-  public static new(url: string): PreviewUrlVO {
+  public static new(url: string): UrlVO {
     const value = url.trim();
 
-    return new PreviewUrlVO(value);
+    return new UrlVO(value);
   }
 
   get value(): string {

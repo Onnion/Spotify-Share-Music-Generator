@@ -1,14 +1,14 @@
-import { ISpotifyService } from '@contracts/services/spotify.service';
+import { ITrackService } from '@libs/application/contracts/services/track.service';
 import { Module } from '@nestjs/common';
 import { SpotifyService } from './spotify.service';
 
 @Module({
   providers: [
     {
-      provide: ISpotifyService,
+      provide: ITrackService,
       useClass: SpotifyService,
     },
   ],
-  exports: [ISpotifyService],
+  exports: [ITrackService],
 })
 export class SpotifyModule {}
