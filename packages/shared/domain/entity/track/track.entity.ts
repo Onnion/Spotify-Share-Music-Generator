@@ -1,33 +1,59 @@
+import { UrlVO, UrlVOProps } from "./vo/url.vo";
+
 type ConstructorProps = {
-  previewUrl: string;
-  album: string;
-  name: string;
+  trackUrl: UrlVOProps;
+  previewUrl?: UrlVOProps;
+  album?: string;
+  name?: string;
+  thumb?: string;
 };
 
 type ConstructorArgs = {
-  preview_url: string;
-  album: string;
-  name: string;
+  trackUrl: UrlVO;
+  previewUrl?: UrlVO;
+  album?: string;
+  name?: string;
+  thumb?: string;
 };
 
 export class Track {
-  private readonly preview_url;
-  private readonly album;
-  private readonly name;
+  private readonly _trackUrl: UrlVO;
+  private readonly _previewUrl: UrlVO;
+  private readonly _album: string;
+  private readonly _name: string;
+  private readonly _thumb: string;
 
   private constructor(args: ConstructorArgs) {
-    this.preview_url = args.preview_url;
-    this.album = args.album;
-    this.name = args.name;
+    this._previewUrl = args.previewUrl;
+    this._album = args.album;
+    this._name = args.name;
+    this._thumb = args.thumb;
+    this._trackUrl = args.trackUrl;
   }
 
-  static new(props: ConstructorProps): Track {
-    // @TODO: Adicionar valiação
-
+  public static new(props: ConstructorProps): Track {
     return new Track({
-      preview_url: props.previewUrl,
+      previewUrl: UrlVO.new(props.previewUrl),
+      trackUrl: UrlVO.new(props.name),
       album: props.album,
       name: props.name,
+      thumb: props.name,
     });
+  }
+
+  get album() {
+    return this._album
+  }
+
+  get name() {
+    return this._name
+  }
+
+  get thumb() {
+    return this._thumb
+  }
+
+  get previewUrl() {
+    return this._previewUrl
   }
 }

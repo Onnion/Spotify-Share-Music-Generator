@@ -10,5 +10,4 @@ variable "ecr_repository_name" {
 
 variable "container_port" {
   default = 3000
-
 }

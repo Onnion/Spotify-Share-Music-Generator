@@ -3,6 +3,19 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "tsconfig.json"
+  },
+  "projects": {
+    "spotify-nestjs": {
+      "type": "application",
+      "root": "apps/spotify-proxy",
+      "entryFile": "main",
+      "sourceRoot": "apps/spotify-proxy/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/spotify-proxy/tsconfig.build.json"
+      }
+    }
   }
 }
